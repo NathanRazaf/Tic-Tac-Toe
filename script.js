@@ -5,21 +5,27 @@ let turn = true;
 const victoryPatterns = [[0,1, 2], [3, 4, 5], [6, 7, 8],
     [0, 3, 6],[1, 4, 7],[2, 5, 8],
     [0, 4, 8],[2, 4, 6]];
-const player1imgs = document.querySelectorAll(".player.one img");
-const player2imgs = document.querySelectorAll(".player.two img");
+const player1imgs = document.querySelectorAll(".player.one .icon");
+const player2imgs = document.querySelectorAll(".player.two .icon");
 
 const Player = (name, icon) => {
-    icon='<img src="'+icon+'">';
+    icon='<img src="'+icon+'" alt="Player Icon">';
     return {name, icon};
 }
 
 let player1 = Player("Player 1", "./icons/ztmy-icon-1.jpg");
 let player2 = Player("Player 2", "./icons/ztmy-icon-4.jpg");
+player1imgs[0].classList.add("icon-selected");
+player2imgs[0].classList.add("icon-selected");
 
 player1imgs.forEach(img => {
     img.addEventListener('click', () => {
         if (!iconsChosen) {
             player1 = Player("Player 1", img.src);
+            player1imgs.forEach(theImg => {
+                theImg.classList.remove("icon-selected");
+            });
+            img.classList.add("icon-selected");
         }
     });
 })
@@ -28,6 +34,10 @@ player2imgs.forEach(img => {
     img.addEventListener('click', () => {
         if (!iconsChosen) {
             player2 = Player("Player 2", img.src);
+            player2imgs.forEach(theImg => {
+                theImg.classList.remove("icon-selected");
+            });
+            img.classList.add("icon-selected");
         }
     });
 })

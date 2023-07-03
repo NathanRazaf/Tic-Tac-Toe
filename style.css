@@ -78,14 +78,16 @@ html, body {
     gap: 25px;
 }
 
-.player img {
+.player .icon {
     border-radius: 50%;
-    box-shadow: 0px 0px 5px 0px black;
     transition: all 0.2s ease;
 }
 
-.player img:hover {
+.player .icon:hover {
     transform: scale(1.1);
-    border-radius: 25%;
     cursor: pointer;
+}
+
+.icon-selected {
+    box-shadow: 0px 0px 10px 0px blue;
 }
